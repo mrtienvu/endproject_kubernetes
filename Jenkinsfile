@@ -4,7 +4,7 @@ pipeline {
 		maven "mymaven"
 	}
     environment {
-        DOCKER_IMAGE_NAME = "mrtienvu/myendproject"
+        DOCKER_IMAGE_NAME = "mrtienvu/endprojectimage"
     }
     stages {
         stage('Packaging') {
