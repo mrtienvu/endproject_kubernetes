@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: mypod
+ labels:
+  app: mrtienvu/endprojectimage:latest
+spec:
+ containers:
+  - name: mypod
+    image: mrtienvu/endprojectimage:latest
