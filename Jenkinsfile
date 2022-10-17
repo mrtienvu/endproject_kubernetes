@@ -10,6 +10,7 @@ pipeline {
     stages {
         stage('Package'){
 	      steps{
+		        git 'https://github.com/mrtienvu/endproject_kubernetes.git'
 			echo "Packaging..."
 			sh 'mvn package'
 	      }
