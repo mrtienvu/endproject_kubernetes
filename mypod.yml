@@ -3,7 +3,7 @@ kind: Pod
 metadata:
  name: mypod
  labels:
-  app: mrtienvu/endprojectimage:latest
+  app: mypod
 spec:
  containers:
   - name: mypod
