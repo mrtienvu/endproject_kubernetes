@@ -4,7 +4,7 @@ pipeline {
         DOCKER_IMAGE_NAME = "mrtienvu/myendproject"
     }
     stages {
-        stage('Build') {
+        stage('Packaging') {
             steps {
 		echo "Cloning..."
 		git branch: 'main', url: 'https://github.com/mrtienvu/endproject_kubernetes.git'
