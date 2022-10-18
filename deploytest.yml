@@ -2,11 +2,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: mydeployment-service
+  name: deploytest-service
 spec:
   type: NodePort
   selector:
-    app: mydeployment
+    app: deploytest
   ports:
   - protocol: TCP
     port: 8080
@@ -16,19 +16,19 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mydeployment
+  name: deploytest
   labels:
-    app: mydeployment
+    app: deploytest
 spec:
   selector:
     matchLabels:
-      app: mydeployment
+      app: deploytest
   template:
     metadata:
-      name: mydeployment
+      name: deploytest
       labels:
-        app: mydeployment
+        app: deploytest
     spec:
       containers:
-        - name: mydeployment
+        - name: deploytest
           image: mrtienvu/endprojectimage
