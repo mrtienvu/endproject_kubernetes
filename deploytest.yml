@@ -20,6 +20,7 @@ metadata:
   labels:
     app: deploytest
 spec:
+  replicas: $CANARY_REPLICAS
   selector:
     matchLabels:
       app: deploytest
