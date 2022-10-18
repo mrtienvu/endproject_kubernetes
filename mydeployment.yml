@@ -1,0 +1,34 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mydeployment-service
+spec:
+  type: NodePort
+  selector:
+    app: mydeployment
+  ports:
+  - protocol: TCP
+    port: 8080
+    nodePort: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+  labels:
+    app: mydeployment
+spec:
+  selector:
+    matchLabels:
+      app: mydeployment
+  template:
+    metadata:
+      name: mydeployment
+      labels:
+        app: mydeployment
+    spec:
+      containers:
+        - name: mydeployment
+          image: mrtienvu/endprojectimage
