@@ -9,11 +9,11 @@ pipeline {
     stages {
         stage('Packaging') {
             steps {
-				echo "Cloning..."
-		        git branch: 'main', url: 'https://github.com/mrtienvu/endproject_kubernetes.git'
-				echo "Packaging..."
-				sh 'mvn package'
-				sh 'cp target/addressbook.war ./'
+		echo "Cloning..."
+		git branch: 'main', url: 'https://github.com/mrtienvu/endproject_kubernetes.git'
+		echo "Packaging..."
+		sh 'mvn package'
+		sh 'cp target/addressbook.war ./'
             }
         }
         stage('Build Docker Image') {
@@ -52,6 +52,11 @@ pipeline {
 		kubernetesDeploy configs: 'deploytest.yml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
 				
                 kubernetesDeploy configs: 'deployment.yml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+            }
+        }
+	stage('Auto scale') {
+            steps {			
+                kubernetesDeploy configs: 'autoscale.yml', kubeConfig: [path: ''], kubeconfigId: 'kubeconfig', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
             }
         }
     }
