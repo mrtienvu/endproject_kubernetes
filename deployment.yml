@@ -4,13 +4,13 @@ apiVersion: v1
 metadata:
   name: myendproject-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: myendproject
   ports:
   - protocol: TCP
     port: 8080
-    nodePort: 30881
+    targetPort: 30881
 
 ---
 apiVersion: apps/v1
