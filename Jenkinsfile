@@ -36,5 +36,17 @@ pipeline {
                 }
             }
         }
+	stage('Deploy To Staging') {
+            environment { 
+                CANARY_REPLICAS = 1
+            }
+            steps {
+                kubernetesDeploy(
+                    kubeconfigId: 'kubeconfig',
+                    configs: 'mydeployment.yml',
+                    enableConfigSubstitution: true
+                )
+            }
+        }
     }
 }
