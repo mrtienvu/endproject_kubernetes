@@ -33,3 +33,6 @@ spec:
       containers:
         - name: myendproject
           image: mrtienvu/endprojectimage
+          resources:
+            limits:
+              cpu: 20m
